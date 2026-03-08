@@ -7,7 +7,7 @@
 
     <groupId>sn.isi.l3gl.core</groupId>
     <artifactId>product-core</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <parent>
@@ -35,7 +35,7 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Pour les tests (optionnel) -->
+        <!-- Pour les tests -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
