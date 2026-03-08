@@ -14,22 +14,29 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    // Méthode pour créer un produit (version 0.0.1-SNAPSHOT)
+    // Créer un produit (0.0.1-SNAPSHOT)
     public Product createProduct(Product product) {
         return productRepository.save(product);
     }
 
-    // Méthode pour lister tous les produits (version 0.1.0-SNAPSHOT)
+    // Lister tous les produits (0.1.0-SNAPSHOT)
     public List<Product> listProducts() {
         return productRepository.findAll();
     }
 
-    // Méthode pour mettre à jour la quantité (version 0.2.0-SNAPSHOT)
+    // Mettre à jour la quantité (0.2.0-SNAPSHOT)
     @Transactional
     public Product updateQuantity(Long id, int newQuantity) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Produit non trouvé avec l'id : " + id));
         product.setQuantity(newQuantity);
         return product;
+    }
+
+    // Compter les produits en stock faible (0.3.0-SNAPSHOT)
+    public long countLowStockProducts(int threshold) {
+        return productRepository.findAll().stream()
+                .filter(p -> p.getQuantity() <= threshold)
+                .count();
     }
 }
