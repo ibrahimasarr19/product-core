@@ -22,9 +22,10 @@ public class Product {
     @Column(nullable = false)
     private Integer quantity;
 
-    // Constructeurs
+    // Constructeur par défaut (obligatoire pour JPA)
     public Product() {}
 
+    // Constructeur avec paramètres
     public Product(String name, String description, BigDecimal price, Integer quantity) {
         this.name = name;
         this.description = description;
